@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benimle Date'e Çıkar Mısın?</title>
+<style>
+    /* Resmi ortalamak ve ekranın tamamını kaplamasını önlemek için stil */
+    .centered-image {
+        display: block;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 80%; /* Resmin ekranın en fazla %80'ini kaplamasını sağlar */
+        max-height: 80vh; /* Resmin ekranın en fazla %80 yüksekliğini kaplamasını sağlar */
+    }
+
+    /* İsteğe bağlı olarak ekranın arka planını kaplayacak bir stil */
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: white;
+        text-align: center;
+        color: white;
+        font-family: Arial, sans-serif;
+        overflow: hidden; /* Sayfanın kaydırılabilir olmasını engelle */
+    }
+
+    /* Soru metni stil */
+    #questionText {
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: black;
+    }
+
+    /* Butonların stil */
+    .button {
+        margin-top: 20px; /* Butonlar arasındaki boşluk */
+        padding: 10px 20px;
+        background-color:red; /* Varsayılan arka plan rengi */
+        color: black; /* Varsayılan yazı rengi */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        display: block; /* Butonları görünür hale getir */
+    }
+
+    /* Evet butonunun stil */
+    #evetButton {
+        background-color: blue;
+        position: relative;
+        top: 394px; /* Yukarıdan 20 piksel aşağı */
+        left: 550px;
+    }
+
+    /* Hayır butonunun stil */
+    #hayirButton {
+        position: relative;
+        top: 340px; /* Yukarıdan 20 piksel aşağı */
+        left: 650px;
+    }
+
+</style>
+</head>
+<body>
+
+<!-- Ortada duracak resim -->
+<img id="centeredImage" class="centered-image" src="1.jpg" alt="Ortada Duran Resim">
+
+<!-- Soru metni -->
+<h1 id="questionText">Benimle Date'e Çıkar Mısın?</h1>
+
+<!-- Evet ve Hayır butonları -->
+<button id="evetButton" class="button" onclick="changeContent()">Evet</button>
+<button id="hayirButton" class="button" onmouseover="changePosition()">Hayır</button>
+
+<script>
+    // Hayır butonunun üzerine gelindiğinde butonun konumunu rastgele ayarlama
+    function changePosition() {
+        var button = document.getElementById("hayirButton");
+        var buttonRect = button.getBoundingClientRect(); // Butonun boyutlarını al
+        var newX = Math.random() * (window.innerWidth - buttonRect.width); // Yeni x konumu
+        var newY = Math.random() * (window.innerHeight - buttonRect.height); // Yeni y konumu
+        button.style.left = newX + "px";
+        button.style.top = newY + "px";
+    }
+
+    // Evet butonuna tıklandığında resmi ve yazıyı değiştirme
+    function changeContent() {
+        document.getElementById("centeredImage").src = "2.jpg"; // Resmin kaynağını değiştirme
+        document.getElementById("questionText").textContent = "KAÇOVVVVVVVVVVVVVVV!"; // Yazıyı değiştirme
+    }
+</script>
+
+</body>
+</html>
